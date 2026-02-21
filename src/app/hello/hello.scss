@@ -1,6 +1,6 @@
 :host {
   display: block;
-  padding: 16px;
+  padding: 1rem;
   background: #dedede;
 }
 
@@ -9,14 +9,23 @@
   flex-direction: column;
   gap: 16px;
 
+  &__signals {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  &__signals__actions {
+    display: flex;
+    flex-direction: column;
+
+  }
+
   &__signals__action__buttons {
     display: flex;
     flex-direction: row;
-  }
-
-  &__signals {
-    display: flex;
-    flex-direction: column;
+    height: max-content;
+    gap: 1rem;
   }
 
   span {
