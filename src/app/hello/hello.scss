@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  padding: 16px;
+  background: #dedede;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__signals__action__buttons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__signals {
+    display: flex;
+    flex-direction: column;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
