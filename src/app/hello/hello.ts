@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 enum ButtonState {
   enabled = 'Habilitado',
@@ -12,10 +12,16 @@ enum ButtonState {
 })
 export class Hello {
   protected title = 'Bem vindo(a) ao Angular Moderno!';
-
   protected isDisabled = false;
-  //signals
-  protected counterSignal = signal(0);
+
+  protected count = signal(0);
+
+  protected doubleCount = computed(() => this.count() * 2);
+
+  /* protected getDoubleCount() {
+    console.info('doubleCounter foi chamado..');
+    return this.count() * 2;
+  } */
 
   protected get btnLabel(): string {
     return this.isDisabled ? ButtonState.disabled : ButtonState.enabled;
@@ -26,10 +32,14 @@ export class Hello {
   }
 
   protected increase() {
-    this.counterSignal.update((current) => current + 1);
+    this.count.update((current) => current + 1);
   }
 
   protected decrease() {
-    this.counterSignal.update((current) => (current > 0 ? current - 1 : 0));
+    this.count.update((current) => (current > 0 ? current - 1 : 0));
+  }
+
+  protected reset() {
+    this.count.set(0);
   }
 }

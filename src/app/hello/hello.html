@@ -15,17 +15,25 @@
   <div class="container__signals__actions">
     <div>
       <h2>Signals</h2>
-      <p><span>Valor atual</span>: {{ counterSignal() }}</p>
+      <p><span>Valor atual</span>: {{ count() }}</p>
     </div>
 
     <div class="container__signals__action__buttons">
       <div><button (click)="decrease()">-</button></div>
       <div>
-        {{ counterSignal() }}
+        {{ count() }}
       </div>
       <div>
         <button (click)="increase()">+</button>
       </div>
+
+      <div>
+        <button (click)="reset()">Reset</button>
+      </div>
     </div>
+    <div class="container__signals__action__buttons">
+      <p><span>Double count:</span> {{ doubleCount() }}</p>
+<!--       <p><span>Double count:</span> {{ getDoubleCount() }}</p>
+ -->    </div>
   </div>
 </div>
