@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 
 enum ButtonState {
   enabled = 'Habilitado',
@@ -17,6 +17,8 @@ export class Hello {
   protected count = signal(0);
 
   protected doubleCount = computed(() => this.count() * 2);
+
+  protected readonly countLog = effect(() => console.warn('Count mudou: ', this.count()));
 
   /* protected getDoubleCount() {
     console.info('doubleCounter foi chamado..');
