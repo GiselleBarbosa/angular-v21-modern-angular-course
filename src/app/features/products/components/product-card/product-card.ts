@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Product } from '../../interfaces/product';
+import { Produto } from '../../interfaces/produto';
 
 @Component({
   selector: 'app-product-card',
@@ -10,8 +10,8 @@ import { Product } from '../../interfaces/product';
   styleUrl: './product-card.scss',
 })
 export class ProductCard {
-  readonly product = input.required<Product>();
-  readonly addButtonLabel = input<string>('Add to Cart');
+  readonly produto = input.required<Produto>();
+  readonly addButtonLabel = input<string>('Comprar');
   readonly addButtonCartClicked = output();
 
   clickAddCartButton() {
