@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { ProductCard } from '../product-card/product-card';
 import { Product } from '../../interfaces/product';
 import { productsMock } from '../../mock/products-mock';
-import { MatIcon } from "@angular/material/icon";
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-products-grid',
@@ -12,4 +12,8 @@ import { MatIcon } from "@angular/material/icon";
 })
 export class ProductsGrid {
   protected readonly products = signal<Product[]>(productsMock);
+
+  addToCart(productName: string) {
+    alert(`${productName} foi adicionado ao carrinho!`);
+  }
 }

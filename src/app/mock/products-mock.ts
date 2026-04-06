@@ -1,7 +1,7 @@
 import { Product } from '../interfaces/product';
 
 export const productsMock: Product[] = [
-/*   {
+  {
     id: 1,
     name: 'Premium Wireless Headphones',
     description:
@@ -22,5 +22,5 @@ export const productsMock: Product[] = [
     description: 'Compact speaker with powerful bass and 12-hour battery life.',
     price: 79.99,
     originalPrice: 99.99,
-  } */
+  },
 ];
