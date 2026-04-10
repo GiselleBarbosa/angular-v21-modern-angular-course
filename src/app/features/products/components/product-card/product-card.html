@@ -1,12 +1,21 @@
 <mat-card class="product-card">
   <mat-card-header>
     <mat-card-title>{{ produto().name }}</mat-card-title>
-    <mat-card-subtitle>Category</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
+    @if (produto().originalPrice) {
+      <span class="sale-badge">Desconto</span>
+      <p class="price-row">
+        <span class="current-price">{{ produto().price }}</span>
+        <span class="original-price"> {{ produto().originalPrice }}</span>
+      </p>
+    } @else {
+      <p class="price-row">
+        <span class="current-price">{{ produto().price }}</span>
+      </p>
+    }
     <p>{{ produto().description }}</p>
-    <p class="price">{{ produto().price }}</p>
   </mat-card-content>
 
   <mat-card-actions>
