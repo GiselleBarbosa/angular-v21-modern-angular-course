@@ -9,7 +9,7 @@
   <p class="search-preview">Item de busca: {{ termoPesquisa() }}</p>
 
   <div class="products-grid">
-    @for (produto of produtos(); track produto.id) {
+    @for (produto of produtosFiltrados(); track produto.id) {
       <app-product-card
         [produto]="produto"
         [addButtonLabel]="'Adicionar ao carrinho'"
@@ -18,8 +18,7 @@
     } @empty {
       <div class="empty-state">
         <mat-icon>inventory_2</mat-icon>
-        <h3>Não existem produtos disponíveis</h3>
-        <p>Volte mais tarde para conferir as novidades!</p>
+        <p>Nenhum produto corresponde a sua pesquisa.</p>
       </div>
     }
   </div>

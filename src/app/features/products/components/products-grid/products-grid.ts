@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Produto } from '../../interfaces/produto';
 import { produtosMock } from '../../mock/produtos-mock';
@@ -17,6 +17,20 @@ export class ProductsGrid {
   protected readonly produtos = signal<Produto[]>(produtosMock);
   protected readonly termoPesquisa = signal('');
 
+  protected readonly produtosFiltrados = computed(() => {
+    const termo = this.termoPesquisa().toLocaleLowerCase().trim();
+    
+    if (!termo) {
+      return this.produtos();
+    }
+
+    return this.produtos().filter(
+      (produto) =>
+        produto.name.toLocaleLowerCase().includes(termo) ||
+        produto.description.toLocaleLowerCase().includes(termo),
+    );
+  });
+
   addToCart(productName: string) {
     console.log(this.termoPesquisa());
     alert(`${productName} foi adicionado ao carrinho!`);
@@ -26,7 +40,7 @@ export class ProductsGrid {
     this.termoPesquisa.set('');
   }
 
-  trimSearch() {
-    this.termoPesquisa.update((value) => value.trim());
-  }
+  // trimSearch() {
+  //   this.termoPesquisa.update((value) => value.trim());
+  // }
 }
