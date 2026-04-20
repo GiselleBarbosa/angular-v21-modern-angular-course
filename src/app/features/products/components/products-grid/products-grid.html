@@ -1,19 +1,26 @@
 <div class="products-container">
   <p>Total de produtos: {{ produtos().length }}</p>
-</div>
 
-<div class="products-grid">
-  @for (produto of produtos(); track produto.id) {
-    <app-product-card
-      [produto]="produto"
-      [addButtonLabel]="'Adicionar ao carrinho'"
-      (cartClick)="addToCart(produto.name)"
-    />
-  } @empty {
-    <div class="empty-state">
-      <mat-icon>inventory_2</mat-icon>
-      <h3>Não existem produtos disponíveis</h3>
-      <p>Volte mais tarde para conferir as novidades!</p>
-    </div>
-  }
+  <mat-form-field appearance="outline" class="example-form-field">
+    <mat-label>Buscar produtos</mat-label>
+    <input matInput [(ngModel)]="termoPesquisa" placeholder="ex: Wireless Mouse" type="text" />
+  </mat-form-field>
+
+  <p class="search-preview">Item de busca: {{ termoPesquisa() }}</p>
+
+  <div class="products-grid">
+    @for (produto of produtos(); track produto.id) {
+      <app-product-card
+        [produto]="produto"
+        [addButtonLabel]="'Adicionar ao carrinho'"
+        (cartClick)="addToCart(produto.name)"
+      />
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>inventory_2</mat-icon>
+        <h3>Não existem produtos disponíveis</h3>
+        <p>Volte mais tarde para conferir as novidades!</p>
+      </div>
+    }
+  </div>
 </div>
