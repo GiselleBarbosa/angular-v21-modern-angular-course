@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Produto } from '../../interfaces/produto';
 import { produtosMock } from '../../mock/produtos-mock';
@@ -6,6 +6,7 @@ import { ProductCard } from '../product-card/product-card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-products-grid',
@@ -16,10 +17,11 @@ import { FormsModule } from '@angular/forms';
 export class ProductsGrid {
   protected readonly produtos = signal<Produto[]>(produtosMock);
   protected readonly termoPesquisa = signal('');
+  private readonly carrinhoService = inject(CarrinhoService);
 
   protected readonly produtosFiltrados = computed(() => {
     const termo = this.termoPesquisa().toLocaleLowerCase().trim();
-    
+
     if (!termo) {
       return this.produtos();
     }
@@ -31,9 +33,8 @@ export class ProductsGrid {
     );
   });
 
-  addToCart(productName: string) {
-    console.log(this.termoPesquisa());
-    alert(`${productName} foi adicionado ao carrinho!`);
+  adicionarProdutoAoCarrinho(produto: Produto) {
+    this.carrinhoService.adicionarProdutoAoCarrinho(produto);
   }
 
   clearSearch() {

@@ -13,7 +13,7 @@
       <app-product-card
         [produto]="produto"
         [addButtonLabel]="'Adicionar ao carrinho'"
-        (cartClick)="addToCart(produto.name)"
+        (addButtonCartClicked)="adicionarProdutoAoCarrinho(produto)"
       />
     } @empty {
       <div class="empty-state">
