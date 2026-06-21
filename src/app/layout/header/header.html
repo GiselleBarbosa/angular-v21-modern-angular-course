@@ -10,6 +10,13 @@
   <button matButton>Produtos</button>
 
   <button matButton>
-    <mat-icon aria-hidden="false" aria-label="Cart" fontIcon="shopping_cart"></mat-icon>
+    <mat-icon
+      [matBadge]="carrinhoService.totalProdutos()"
+      [matBadgeHidden]="carrinhoService.totalProdutos() === 0"
+      [matBadgeDescription]="'Itens adicionados ao carrinho'"
+      aria-hidden="false"
+      aria-label="Cart"
+      fontIcon="shopping_cart"
+    ></mat-icon>
   </button>
 </mat-toolbar>
